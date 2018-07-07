@@ -6,13 +6,15 @@ import android.widget.RelativeLayout;
 import android.widget.Button;
 import android.graphics.Color;
 import android.widget.EditText;
+import android.content.res.Resources;
+import android.util.TypedValue;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
         //layout
         RelativeLayout mRelativeLayout = new RelativeLayout(this);
         mRelativeLayout.setBackgroundColor(Color.GREEN);
@@ -43,13 +45,18 @@ public class MainActivity extends AppCompatActivity {
         buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
         buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
 
+        //convert dp value to pixel value
+        Resources mResource =getResources();
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, mResource.getDisplayMetrics());
+        mUserName.setWidth(px);
 
 
-
-        mRelativeLayout.addView(mRedButton, buttonDetails);
+        /*mRelativeLayout.addView(mRedButton, buttonDetails);
         mRelativeLayout.addView(mUserName, userNameDetails);
 
-        setContentView(mRelativeLayout);
+        setContentView(mRelativeLayout);*/
+
+
     }
 
 
